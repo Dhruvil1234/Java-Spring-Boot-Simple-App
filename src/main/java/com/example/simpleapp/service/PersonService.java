@@ -4,6 +4,7 @@ import com.example.simpleapp.model.Person;
 
 import java.util.List;
 
+
 public interface PersonService {
     void addPerson(Person person);
 

@@ -7,29 +7,22 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
-@Entity
 @Getter
 @Setter
+@Entity
 @AllArgsConstructor
 public class Person {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="id")
+
     private int id;
 
-    @Column(name="firstname")
+    @NotNull
+    @Size(min=2, message="Name should have atleast 2 characters")
     private String name;
-
-    @Column(name= "surname")
     private String surname;
-
-    @Column(name="age")
     private int age;
-
-    @Column(name="covidinfo")
     private String covidInfo;
-
-
 }

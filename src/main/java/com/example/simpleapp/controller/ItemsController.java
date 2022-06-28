@@ -1,8 +1,9 @@
 package com.example.simpleapp.controller;
 
-
 import com.example.simpleapp.exception.PersonNotFoundException;
+import com.example.simpleapp.model.Item;
 import com.example.simpleapp.model.Person;
+import com.example.simpleapp.service.ItemServiceImpl;
 import com.example.simpleapp.service.PersonServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -10,23 +11,23 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-public class HelloController {
+public class ItemsController {
 
     @Autowired
-    private PersonServiceImpl personService;
+    private ItemServiceImpl itemService;
 
-    @PostMapping("/person")
-    public void addPerson(@RequestBody Person person) {
-        personService.addPerson(person);
+    @PostMapping("/item")
+    public void addPerson(@RequestBody Item item) {
+        itemService.addItem(item);
     }
 
 
-    @GetMapping("/persons")
-    public List<Person> getPersons(){
-        return personService.getAllPersons();
+    @GetMapping("/items")
+    public List<Item> getItems(){
+        return itemService.getAllItems();
     }
 
-    @GetMapping("/persons/{id}")
+    /*@GetMapping("/persons/{id}")
     public Person getPersonById(@PathVariable int id) throws Exception {
         List<Person> personList = personService.getAllPersons();
         for(int i = 0; i < personList.size(); i++){
@@ -35,6 +36,6 @@ public class HelloController {
         }
         throw new PersonNotFoundException("person not found ! ");
     }
+*/
 
-    
 }
